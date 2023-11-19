@@ -5,6 +5,7 @@ public class Cafe extends Building {
     private int nSugarPackets; // The number of sugar packets remaining in inventory
     private int nCreams; // The number of "splashes" of cream remaining in inventory
     private int nCups; // The number of cups remaining in inventory
+    private boolean hasElevator;
 
 
  /**
@@ -18,21 +19,22 @@ public class Cafe extends Building {
   * @param int nCups
   */
     public Cafe(String name, String address, int nFloors, int nCoffeeOunces,
-    int nSugarPackets, int nCreams, int nCups) {
+    int nSugarPackets, int nCreams, int nCups, boolean hasElevator) {
         super(name, address, nFloors);
         this.nCoffeeOunces = nCoffeeOunces;
         this.nSugarPackets = nSugarPackets;
         this.nCreams = nCreams;
         this.nCups = nCups;
+        this.hasElevator = hasElevator;
         System.out.println("You have built a cafe: ☕");
     }
  /**
-  * cafe constructor overloaded with name and address
+  * cafe constructor overloaded with name and address with default of two floors
   * @param name
   * @param address
   */
     public Cafe(String name, String address) {
-            super(name, address, 1);
+            super(name, address, 2);
             this.nCoffeeOunces = 100;
             this.nSugarPackets = 100;
             this.nCreams = 100;
@@ -68,12 +70,22 @@ public class Cafe extends Building {
         this.nCups = nCups;
     }
 
+    /**
+     * Throws exception regardless of input
+     * @param int floor number
+     */
+    public void goToFloor(int floorNum) {
+        throw new RuntimeException("You are not pemitted to visit other floors in this building");
+    }
+    
+ /** prints the methods available for this class */
     public void showOptions() {
         System.out.println("Available options at " + this.name + ":\n + enter() \n + exit() \n + goUp() \n + goDown()\n + goToFloor(n)\n + sellCoffee(int size,int nSugarPackets, int nCreams)\n + restock(int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups)");
     }
+
     
     public static void main(String[] args) {
-        Cafe compass = new Cafe("compass", "neilson", 2, 1,1,1,1);
+        Cafe compass = new Cafe("compass", "neilson", 2, 1,1,1,1, true);
         compass.sellCoffee(1,1,1);
         compass.sellCoffee(2, 2, 0);
     }
