@@ -71,7 +71,7 @@ public class Library extends Building {
   }
  /**
   * prints collection
-  * @param librayr
+  * @param library
   * @return set
   */
   public Set printCollection(){
@@ -126,8 +126,8 @@ public class Library extends Building {
     public static void main(String[] args) {
       Library neilson = new Library("neilson", "smith", 3, false);
       neilson.addTitle("Harry Potter");
-      System.out.println(neilson.printCollection());
-      neilson.checkOut("Harry Potter");
+      neilson.addTitle("Flatland");
+      neilson.checkOut("Harry Potter"); //this gives error
       System.out.println(neilson.printCollection());
     }
 

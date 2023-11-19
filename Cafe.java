@@ -8,7 +8,7 @@ public class Cafe extends Building {
 
 
  /**
-  * cafe object constructor
+  * full cafe constructor, assuming it only has 1 floor
   * @param string name
   * @param string address
   * @param int nFloors
@@ -26,6 +26,20 @@ public class Cafe extends Building {
         this.nCups = nCups;
         System.out.println("You have built a cafe: ☕");
     }
+ /**
+  * cafe constructor overloaded with name and address
+  * @param name
+  * @param address
+  */
+    public Cafe(String name, String address) {
+            super(name, address, 1);
+            this.nCoffeeOunces = 100;
+            this.nSugarPackets = 100;
+            this.nCreams = 100;
+            this.nCups = 100;
+            System.out.println("You have built a cafe: ☕");
+        }
+
  /**
   * sells coffee by reducing the inventory size
   * @param size,nSugarPackets,nCreams,cafe
@@ -59,7 +73,7 @@ public class Cafe extends Building {
     }
     
     public static void main(String[] args) {
-        Cafe compass = new Cafe("compass", "neilson", 1, 1,1,1,1);
+        Cafe compass = new Cafe("compass", "neilson", 2, 1,1,1,1);
         compass.sellCoffee(1,1,1);
         compass.sellCoffee(2, 2, 0);
     }
